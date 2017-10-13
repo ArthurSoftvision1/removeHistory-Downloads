@@ -1,4 +1,4 @@
-# Remove history!
+# Remove history&downloads!
 
 This add-on offers the possibility to the user to delete the browser history and the downloads.
 
