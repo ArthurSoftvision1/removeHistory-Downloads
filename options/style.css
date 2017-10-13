@@ -1,0 +1,30 @@
+#body-section {
+  width: 35%;
+  font-size: 13px;
+}
+
+.options {
+  padding: 0.5em 0;
+  margin: 1em 0;
+}
+
+.options input,
+.options > #time {
+  float: left;
+}
+
+.data-type-option {
+  display: flow-root;
+}
+
+#save {
+  color:white;
+  border: 2px solid #e7916e;
+  background-color: #e7916e;
+}
+
+#save:hover {
+  color:white;
+  border: 2px solid lightsalmon;
+  background-color: lightsalmon;
+} 
