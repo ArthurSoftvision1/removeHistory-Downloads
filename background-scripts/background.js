@@ -34,22 +34,28 @@ function removeData(settings) {
 
   // get data types
   function getData(getTypes) {
+
     let checkData = {};
+
     for (let type of getTypes) {
       checkData[type] = true; // check the type
     }
+    
     return checkData; // return checkData Object
   }
 
   let since = checkTime(settings.setTime); // store time in since variable
   const checkData = getData(settings.checkData); // store data in checkData variable
 
+  // display notification function
   function displayNotification() {
+
     let dataTypeName = Object.keys(checkData).join(", "); // returns checkData Array
     let currentTime = new Date(since).toLocaleString(); // store current time in currentTime variable
+
     browser.notifications.create({ // create notification
       "type": "basic",
-      "iconUrl": browser.extension.getURL("icons/notification.jpg"),
+      "iconUrl": browser.extension.getURL("icons/notification.jpg"), // set notification icon
       "title": "Removed data!", // set notification title
       "message": `Removed ${dataTypeName}\nsince ${currentTime}` // set notification message
     });
