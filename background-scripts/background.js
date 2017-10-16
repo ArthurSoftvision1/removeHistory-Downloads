@@ -49,6 +49,7 @@ function removeData(settings) {
     let currentTime = new Date(since).toLocaleString(); // store current time in currentTime variable
     browser.notifications.create({ // create notification
       "type": "basic",
+      "iconUrl": browser.extension.getURL("icons/notification.jpg"),
       "title": "Removed data!", // set notification title
       "message": `Removed ${dataTypeName}\nsince ${currentTime}` // set notification message
     });
