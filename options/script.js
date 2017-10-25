@@ -11,7 +11,7 @@ function saveSelectedOptions() {
   // get the types (downloads/history)
   function getData() {
     let checkData = []; // creates an empty array
-    const getCheckbox = document.querySelectorAll("#data [type=checkbox]"); // select the checkboxes
+    const getCheckbox = document.querySelectorAll("input[type=checkbox]"); // select the checkboxes
 
     for (let item of getCheckbox) { // make a loop through getCheckbox
       if (item.checked) { // check if is checked
@@ -22,12 +22,12 @@ function saveSelectedOptions() {
     return checkData; // returns the array
   }
 
-  let timeValue = selectTime(); // put the function into timeValue variable
+  const setTime = selectTime(); // put the function into setTime variable
 
   const checkData = getData(); // put the function into checkData variable
 
   browser.storage.local.set({ // set in local storage 
-    timeValue, // set timeValue
+    setTime, // set timeValue
     checkData // set checkData
   });
 }
@@ -35,9 +35,9 @@ function saveSelectedOptions() {
 // update the view with new selected options
 function updateView(savedSettings) {
   const selectTimeInterval = document.querySelector("#time"); // select the element with ID = time
-  selectTimeInterval.value = savedSettings.timeValue; // get the value
+  selectTimeInterval.value = savedSettings.setTime; // get the value
 
-  const getCheckbox = document.querySelectorAll("#data [type=checkbox]"); // select the checkbox type from the element with ID = data
+  const getCheckbox = document.querySelectorAll("input[type=checkbox]"); // select the checkbox type from the element with ID = data
 
   for (let type of getCheckbox) { // make a loop through getCheckbox
     if (savedSettings.checkData.indexOf(type.getAttribute("data-type")) != -1) { // checks if is not -1
@@ -48,10 +48,6 @@ function updateView(savedSettings) {
   }
 }
 
-// on click save the selected options
-const saveOptions = document.querySelector("#save"); // select the element with ID = save
-saveOptions.addEventListener("click", saveSelectedOptions); // on click call the function
-
 // handle error
 function onError(param) {
   console.error(param);
@@ -60,4 +56,10 @@ function onError(param) {
 // update interface
 const getFromStorage = browser.storage.local.get(); // get local storage
 getFromStorage.then(updateView, onError);
+
+// on click save the selected options
+const saveOptions = document.querySelector("#save"); // select the element with ID = save
+saveOptions.addEventListener("click", saveSelectedOptions); // on click call the function
+
+
 
