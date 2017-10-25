@@ -1,10 +1,10 @@
 // default settings object
 var settingsObject = { // object contains time and data type
-  setTime: "hour",
+  setTime: "day", // set "Previous day" by default
 
   checkData: [ // array contains our data types
-    "history",
-    "downloads"
+    "history", // history checked by default
+    "downloads", // downloads checked by default
   ]
 };
 
@@ -29,7 +29,7 @@ function removeData(settings) {
     }
 
     const returnCurrentTime = configTime[time].call(); // set the current time for the notification
-    return Date.now() - returnCurrentTime;
+    return Date.now() - returnCurrentTime; // return current date and time
   }
 
   // get data types
@@ -44,14 +44,14 @@ function removeData(settings) {
     return checkData; // return checkData Object
   }
 
-  let since = checkTime(settings.setTime); // store time in since variable
+  const since = checkTime(settings.setTime); // store time in since variable
   const checkData = getData(settings.checkData); // store data in checkData variable
 
   // display notification function
   function displayNotification() {
 
-    let dataTypeName = Object.keys(checkData).join(", "); // returns checkData Array
-    let currentTime = new Date(since).toLocaleString(); // store current time in currentTime variable
+    const dataTypeName = Object.keys(checkData).join(", "); // returns checkData Array
+    const currentTime = new Date(since).toLocaleString(); // store current time in currentTime variable
 
     browser.notifications.create({ // create notification
       "type": "basic",
