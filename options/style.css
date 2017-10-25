@@ -1,11 +1,11 @@
 #body-section {
-  width: 35%;
+  width: 30%;
   font-size: 13px;
 }
 
 .options {
-  padding: 0.5em 0;
-  margin: 1em 0;
+  padding: 15px 0;
+  margin: 2px 0;
 }
 
 .options input,
@@ -21,6 +21,7 @@
   color:white;
   border: 2px solid #e7916e;
   background-color: #e7916e;
+  width: 50%;
 }
 
 #save:hover {
@@ -28,3 +29,7 @@
   border: 2px solid lightsalmon;
   background-color: lightsalmon;
 } 
+
+#time-options {
+  margin-bottom:15px;
+}
